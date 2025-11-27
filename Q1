@@ -1,0 +1,44 @@
+// Two Sum
+
+import java.util.Arrays;
+class Solution {
+    public int[] twoSum(int[] nums, int target) 
+    {
+        int[] arr= new int[2];
+        int x= -1, y= -1;
+        int[] temp= Arrays.copyOfRange(nums,0,nums.length);
+        Arrays.sort(temp);
+        int i=0, j=nums.length-1;
+        while(i<j)
+        {
+            int sum= temp[i]+temp[j];
+            if(sum==target)
+            {
+                x= temp[i];
+                y= temp[j];
+                break;
+            }   
+            if(sum<target)
+                i++;
+            else
+                j--;
+        }
+        for(i=0; i<nums.length; i++)
+        {
+            if(nums[i]==x)
+            {
+                arr[0]= i;
+                break;
+            }
+        }
+        for(i=nums.length-1; i>=0; i--)
+        {
+            if(nums[i]==y)
+            {
+                arr[1]= i;
+                break;
+            }
+        }
+        return arr;
+    }
+}
