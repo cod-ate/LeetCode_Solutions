@@ -1,0 +1,30 @@
+// Median of Two Sorted Arrays
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2)
+    {
+        double[] merged= new double[nums1.length + nums2.length];    
+        int n1= nums1.length;
+        int n2= nums2.length;
+        int i=0, j=0, k=0;
+        while(i<n1 && j<n2)
+        {
+            if(nums1[i]<nums2[j])
+                merged[k]= nums1[i++];
+            else
+                merged[k]= nums2[j++];
+            k++;
+        }
+        while(i<n1)
+            merged[k++]= nums1[i++];
+        while(j<n2)
+            merged[k++]= nums2[j++];
+        
+        int size= merged.length;
+        if(size%2==1)
+            return merged[size/2];
+            
+        double mid= merged[(size-1)/2] + merged[(size/2)];
+        return mid/2;
+    }
+}
