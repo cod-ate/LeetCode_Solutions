@@ -1,0 +1,53 @@
+// Roman to Integer
+
+class Solution {
+    public int romanToInt(String s) 
+    {
+        // String s= "XL";
+        int count= 0;
+        for(int i=0; i<s.length(); i++)
+        {
+            char curr= s.charAt(i);
+            switch(curr)
+            {
+                case 'I':
+                    count+=1;
+                    break;
+                case 'V':
+                    if(i>0 && s.charAt(i-1)=='I')
+                        count-=2;
+                    count+=5;
+                    break;
+                case 'X':
+                    if(i>0 && s.charAt(i-1)=='I')
+                        count-=2;
+                    count+=10;
+                    break;
+                case 'L':
+                    if(i>0 && s.charAt(i-1)=='X')
+                        count-=20;
+                    count+=50;
+                    break;
+                case 'C':
+                    if(i>0 && s.charAt(i-1)=='X')
+                        count-=20;
+                    count+=100;
+                    break;
+                case 'D':
+                    if(i>0 && s.charAt(i-1)=='C')
+                        count-=200;
+                    count+=500;
+                    break;
+                case 'M':
+                    if(i>0 && s.charAt(i-1)=='C')
+                        count-=200;
+                    count+=1000;
+                    break;
+                default:
+                    // System.out.println("Error!!");
+                    return -1;
+            }
+        }
+        return count;
+    }
+}
