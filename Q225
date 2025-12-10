@@ -1,0 +1,48 @@
+// Implement Stack using Queues
+
+class MyStack {
+    int x;
+    MyStack next, head;
+    public MyStack() {}
+    public MyStack(int x)
+    {
+        this.x= x;
+        this.next= null;
+    }
+    
+    public void push(int x) 
+    {
+        MyStack ms= new MyStack(x);
+        if(ms!=null)
+            ms.next= head;
+        head= ms;
+    }
+    
+    public int pop() 
+    {
+        int data= head.x;
+        head= head.next;
+        return data;
+    }
+    
+    public int top() 
+    {
+        return head.x;
+    }
+    
+    public boolean empty() 
+    {
+        if(head==null)
+            return true;
+        return false;    
+    }
+}
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack obj = new MyStack();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.top();
+ * boolean param_4 = obj.empty();
+ */
