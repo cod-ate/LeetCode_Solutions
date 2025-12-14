@@ -1,0 +1,26 @@
+// Search a 2D Matrix 2
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) 
+    {
+        int maxC= matrix[0].length;
+        for(int i=0; i<matrix.length; i++)
+            if(binarySearch(matrix, i, 0, maxC-1, target))
+                return true;
+        return false;
+    }
+    public boolean binarySearch(int[][] matrix, int row, int minC, int maxC, int target)
+    {
+        while(minC<=maxC)
+        {
+            int mid= (minC+maxC)/2;
+            if(matrix[row][mid]==target)
+                return true;
+            else if(matrix[row][mid]<target)
+                minC= mid+1;
+            else
+                maxC= mid-1;
+        }
+        return false;
+    }
+}
