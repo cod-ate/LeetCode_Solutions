@@ -1,0 +1,31 @@
+// Linked List Cycle
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+ import java.util.*;
+public class Solution {
+    public boolean hasCycle(ListNode head) 
+    {
+        if(head==null || head.next==null)
+            return false;
+        ListNode backward= head;
+        ListNode forward= head;
+        while(forward!=null && forward.next!=null)
+        {
+            backward= backward.next;
+            forward= forward.next.next;
+            if(backward == forward)
+                return true;
+        }
+        return false;
+    }
+}
