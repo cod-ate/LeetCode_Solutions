@@ -1,4 +1,4 @@
-// Contains Duplicates
+// Contains Duplicate
 
 class Solution {
     public boolean containsDuplicate(int[] nums) 
