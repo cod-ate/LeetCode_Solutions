@@ -1,0 +1,37 @@
+// Set Matrix Zeros
+
+class Solution {
+    public void setZeroes(int[][] matrix) 
+    {
+        ArrayList<ArrayList<Integer>> loc= getLoc(matrix);
+        if(loc.isEmpty())
+            return;
+        for(int i=0; i<loc.size(); i++)
+        {
+            int x= loc.get(i).get(0);
+            int y= loc.get(i).get(1);
+            for(int j=0; j<matrix[0].length; j++)
+                matrix[x][j]= 0;
+            for(int j=0; j<matrix.length; j++)
+                matrix[j][y]= 0;
+        }
+    }
+    public ArrayList<ArrayList<Integer>> getLoc(int[][] mat)
+    {
+        ArrayList<ArrayList<Integer>> list= new ArrayList<>();
+        for(int i=0; i<mat.length; i++)
+        {
+            for(int j=0; j<mat[0].length; j++)
+            {
+                ArrayList<Integer> loc= new ArrayList<>();
+                if(mat[i][j]==0)
+                {
+                    loc.add(i);
+                    loc.add(j);
+                    list.add(loc);
+                }
+            }
+        }
+        return list;
+    }
+}
