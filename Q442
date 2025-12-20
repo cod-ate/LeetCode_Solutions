@@ -1,0 +1,25 @@
+// Find All Duplicates in an Array
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) 
+    {
+        List<Integer> list= new ArrayList<>();
+        for(int i=0; i<nums.length; )
+        {
+            int rightIdx= nums[i]-1;
+            if(nums[i]!=nums[rightIdx])
+            {
+                int temp= nums[i];
+                nums[i]= nums[rightIdx];
+                nums[rightIdx]= temp;
+            }
+            else
+                i++;
+        }
+        
+        for(int i=0; i<nums.length; i++)
+            if(nums[i]!=i+1)
+                list.add(nums[i]);
+        return list;
+    }
+}
