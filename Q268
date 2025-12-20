@@ -1,0 +1,19 @@
+// Missing Number
+
+class Solution {
+    public int missingNumber(int[] nums) 
+    {
+        int max= nums[0];
+        int sum= 0;
+        for(int val: nums)
+        {
+            sum+=val;
+            if(val>max)
+                max= val;
+        }
+        if(max==nums.length-1)
+            return nums.length;
+
+        return (max*(max+1))/2 - sum;
+    }
+}
