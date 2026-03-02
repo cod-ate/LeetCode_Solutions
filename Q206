@@ -1,0 +1,31 @@
+// Reverse Linked List
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        if(head==null || head.next==null)
+        {
+            return head;
+        }
+        ListNode tail= reverseList(head.next);
+
+        head.next.next = head; 
+        head.next = null; 
+
+        return tail;
+    }
+}
+// base-case if LL is empty or has 1 element return head
+// recurse until head.next!=null and save returned value as "new head"
+// go to head.next.next and make it head
+// disconnect link b/w curr head and its next node
+// return "new head"
