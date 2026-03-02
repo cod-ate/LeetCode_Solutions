@@ -1,0 +1,33 @@
+// Remove Linked List Elements
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeElements(ListNode head, int val) 
+    {
+        if(head == null)
+        {
+            return null;
+        }
+
+        head.next= removeElements(head.next, val);
+
+        if(head.val == val)
+        {
+            return head.next;
+        }
+        return head;
+    }
+}
+
+// first put base case (vvi)
+// recurse till last node (store the value for further refrence)
+// go for given condition: if true skip that value and return next one, else: return that value
