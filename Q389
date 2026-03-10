@@ -1,0 +1,17 @@
+// Find the Difference
+
+class Solution {
+    public char findTheDifference(String s, String t) {
+
+        char xor= 0;
+        for(char ch: s.toCharArray())
+        {
+            xor= (char)(xor^ch);
+        }
+        for(char ch: t.toCharArray())
+        {
+            xor= (char)(xor^ch);
+        }
+        return xor;
+    }
+}
